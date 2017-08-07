@@ -123,8 +123,6 @@ document.getElementById("btnLeft").addEventListener("click", function () {
     moverLeft();
 });
 
-
-
 contadorClick = 0;
 var btnForward = document.getElementById("btnForward");
 btnForward.onclick = function () {
@@ -154,6 +152,9 @@ btnForward.onclick = function () {
             img.src = "images/down.jpg";
             objtCelda.td.appendChild(img);
         }
+        if(mapa[objtCelda.x+1][objtCelda.y] == "W"){
+            alert("You win");
+        }
     }
      if(contador == 3){
          if(mapa[objtCelda.x][objtCelda.y-1] == "_"){
@@ -164,5 +165,4 @@ btnForward.onclick = function () {
             objtCelda.td.appendChild(img);
         }
     }
-
 }
