@@ -1,0 +1,71 @@
+body{
+    background-image: url("../images/background.jpg");
+}
+.negro{
+  background-color: black;
+  color: white;
+}
+
+.white{
+     background-color: white;
+}
+
+.start{
+    background-color: greenyellow;
+}
+
+.finish{
+    background-color: red;
+}
+
+h1{
+  text-align: center;
+}
+td{
+  width: 30px;
+  height: 30px;
+}
+
+#btnForward{
+    position: absolute;
+    z-index: 1;
+    top: 200px;
+    right: 30px;
+}
+
+#btnRight{
+    position: absolute;
+    z-index: 1;
+    top: 250px;
+    right: 50px;
+}
+
+#btnLeft{
+    position: absolute;
+    z-index: 1;
+    top: 300px;
+    right: 55px;
+}
+
+#general{
+    position: absolute;
+    background-image: url("../images/naranja.jpg");
+    right: 250px;
+    left: 250px;
+    bottom: 15px;
+    top:100px;
+}
+
+h1{
+    color: white;
+    background-image: url("../images/naranja.jpg");
+    margin-right: 250px;
+    margin-left: 250px;
+    top:100px;
+}
+
+#tablero{
+ position: absolute;
+ top: 60px;
+ left: 80px;
+}
