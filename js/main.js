@@ -117,7 +117,6 @@ function moverLeft() {
 var btnRight =document.getElementById("btnRight");
 btnRight.onclick = function(){
     moverRight();
-    //if(mapa[])
 }
 
 document.getElementById("btnLeft").addEventListener("click", function () {
@@ -139,10 +138,10 @@ btnForward.onclick = function () {
         }
     }
     if(contador == 1){
-         if(mapa[objtCelda.x][objtCelda.y-1] == "_"){
+         if(mapa[objtCelda.x][objtCelda.y+1] == "_"){
             objtCelda.td.removeChild(objtCelda.td.firstChild);
-            objtCelda.td = arrayCelda[objtCelda.x-1][objtCelda.y];
-            objtCelda.x = objtCelda.x-1;
+            objtCelda.td = arrayCelda[objtCelda.x][objtCelda.y+1];
+            objtCelda.y = objtCelda.y+1;
             img.src = "images/right.jpg";
             objtCelda.td.appendChild(img);
         }
