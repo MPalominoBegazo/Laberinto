@@ -16,6 +16,12 @@ var tabla = document.createElement("table");
 tabla.border = "1";
 var tablero = document.getElementById("tablero");
 
+var arrayCelda = new Array(mapa.length);
+for(var i=0; i< arrayCelda.length; i++){
+    arrayCelda[i] = new Array(mapa[0].length);
+}
+console.log(arrayCelda);
+
 for (var i = 0; i < mapa.length; i++) {
     var filas = document.createElement("tr");
     for (var j = 0; j < mapa[i].length; j++) {
@@ -25,6 +31,15 @@ for (var i = 0; i < mapa.length; i++) {
         }
         else if (mapa[i][j] == "o") {
             celda.setAttribute("class", "start");
+            var img =document.createElement("img")
+            img.src = "images/up.jpg";
+            celda.appendChild(img);
+            objtCelda = {
+                td:celda,
+                x:i,
+                y:j
+            }
+
         }
         else if (mapa[i][j] == "W") {
             celda.setAttribute("class", "finish");
@@ -33,10 +48,12 @@ for (var i = 0; i < mapa.length; i++) {
             celda.setAttribute('class', 'white');
         }
         filas.appendChild(celda);
+        arrayCelda[i][j] = celda;
     }
     tabla.appendChild(filas);
 }
 tablero.appendChild(tabla);
+
 
 var dibujo = document.getElementById("dibujo");
 var img = document.createElement("img");
@@ -44,23 +61,27 @@ var img = document.createElement("img");
 function moverRight() {
     dibujo.innerHTML = "";
     if (contador == 0) {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/right.jpg";
-       dibujo.appendChild(img);      
+       objtCelda.td.appendChild(img);      
         contador++;
     }
     else if (contador == 1) {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/down.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador++;
     }
     else if (contador == 2) {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/left.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador++;
     }
     else {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/up.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador = 0;
     }
 }
@@ -68,51 +89,64 @@ function moverRight() {
 function moverLeft() {
     dibujo.innerHTML = "";
     if (contador == 0) {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/left.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador++;
     }
     else if (contador == 1) {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/down.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador++;
     }
     else if (contador == 2) {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/right.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador++;
     }
     else {
+        objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/up.jpg";
-        dibujo.appendChild(img);
+        objtCelda.td.appendChild(img);
         contador = 0;
     }
 }
 
-document.getElementById("btnRight").addEventListener("click", function () {
+var btnRight =document.getElementById("btnRight");
+btnRight.onclick = function(){
     moverRight();
-});
+    //if(mapa[])
+}
 
 document.getElementById("btnLeft").addEventListener("click", function () {
     moverLeft();
 });
 
+
+
 contadorClick = 0;
 var btnForward = document.getElementById("btnForward");
 btnForward.onclick = function () {
-
-    var celdas = document.getElementsByTagName("td");
-    console.log(celdas);
-    var position = 0;
-
-    for (var i = 0; i < celdas.length; i++) {
-        if (celdas[i].className == "start") {
-            imgn = document.createElement("img");
-            imgn.src = "images/up.jpg";
-            //celdas[i].innerHTML = imgn;
-           celdas[i].appendChild(imgn);
-
+    if(contador ==0){
+        if(mapa[objtCelda.x-1][objtCelda.y] == "_"){
+            objtCelda.td.removeChild(objtCelda.td.firstChild);
+            objtCelda.td = arrayCelda[objtCelda.x-1][objtCelda.y];
+            objtCelda.x = objtCelda.x-1;
+            img.src = "images/up.jpg";
+            objtCelda.td.appendChild(img);
         }
     }
+    if(contador == 1){
+         if(mapa[objtCelda.x][objtCelda.y-1] == "_"){
+            objtCelda.td.removeChild(objtCelda.td.firstChild);
+            objtCelda.td = arrayCelda[objtCelda.x-1][objtCelda.y];
+            objtCelda.x = objtCelda.x-1;
+            img.src = "images/right.jpg";
+            objtCelda.td.appendChild(img);
+        }
+    }
+
 
 }
