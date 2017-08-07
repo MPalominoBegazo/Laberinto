@@ -150,7 +150,7 @@ btnForward.onclick = function () {
             objtCelda.td.appendChild(img);
         }
         if(mapa[objtCelda.x+1][objtCelda.y] == "W"){
-            alert("You win!!!!");
+            alert("You win!");
         }
     }
      if(contador == 3){
