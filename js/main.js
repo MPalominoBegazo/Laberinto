@@ -63,7 +63,7 @@ function moverRight() {
     if (contador == 0) {
         objtCelda.td.removeChild(objtCelda.td.firstChild);
         img.src = "images/right.jpg";
-       objtCelda.td.appendChild(img);      
+        objtCelda.td.appendChild(img);      
         contador++;
     }
     else if (contador == 1) {
@@ -146,6 +146,23 @@ btnForward.onclick = function () {
             objtCelda.td.appendChild(img);
         }
     }
-
+    if(contador == 2){
+         if(mapa[objtCelda.x+1][objtCelda.y] == "_"){
+            objtCelda.td.removeChild(objtCelda.td.firstChild);
+            objtCelda.td = arrayCelda[objtCelda.x+1][objtCelda.y];
+            objtCelda.x = objtCelda.x+1;
+            img.src = "images/down.jpg";
+            objtCelda.td.appendChild(img);
+        }
+    }
+     if(contador == 3){
+         if(mapa[objtCelda.x][objtCelda.y-1] == "_"){
+            objtCelda.td.removeChild(objtCelda.td.firstChild);
+            objtCelda.td = arrayCelda[objtCelda.x][objtCelda.y-1];
+            objtCelda.y = objtCelda.y-1;
+            img.src = "images/left.jpg";
+            objtCelda.td.appendChild(img);
+        }
+    }
 
 }
